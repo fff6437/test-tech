@@ -1,0 +1,172 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 0;
+}
+html {
+  background-color: #fff;
+}
+
+body {
+  /* width: 1200px; */
+  margin: auto;
+}
+
+#nav {
+  background-color: #efeff0;
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+
+  color: #333;
+  /* padding: 0 8%; */
+}
+#nav > div {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 15px;
+}
+#nav .nav-logo {
+  width: 135px;
+  height: 55px;
+  /* margin-left: 20px; */
+  display: flex;
+  align-items: center;
+}
+#nav .nav-logo img {
+  height: 40px;
+}
+#nav .nav-btn {
+    font-size: 18px;
+}
+
+#nav .nav-btn a {
+  /* margin: 0 20px; */
+  display: inline-block;
+  padding: 0 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+#nav .nav-btn a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+footer {
+  background-color: #efeff0;
+  /* margin-top: 20px; */
+}
+footer .footer-info {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 25px;
+}
+footer .footer-info > div {
+  width: 250px;
+  height: 160px;
+  text-align: center;
+  word-break:break-all;
+  word-wrap:break-word;
+}
+footer .footer-info > div img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: auto;
+}
+footer .footer-copyright {
+  text-align: center;
+  border-top: 1px solid gainsboro;
+  padding: 15px 0 25px;
+}
+
+
+/* 懒加载图片动画效果 */
+.lazyload,
+.lazyloading {
+	opacity: 0;
+}
+.lazyloaded {
+	opacity: 1;
+	transition: opacity 200ms;
+}
+
+/* 移动端显示导航栏样式 */
+.navbar{
+  /* max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
+  width: 100%; */
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  background-color: #efeff0;
+}
+.navbar .navbar-header img{
+  /* width: 135px; */
+  height: 50px;
+  /* width: 200px; */
+}
+.navbar .navbar-header .navbar-toggle {
+  /* margin-right: 0; */
+}
+.navbar .container-fluid{
+  max-width: 1200px;
+  margin: auto;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  width: 100%;
+  /* position: relative; */
+  /* align-items: center; */
+}
+/* .navbar .container-fluid .navbar-nav{
+  position: absolute;
+  right: 0;
+} */
+
+
+/* @media (max-width:1200px) {
+    body{
+        width: 100%;
+    }
+} */
+@media screen and (max-width:1200px) and (min-width:768px) {
+  .visible-lg{
+    display: block !important;
+  }
+  .hidden-lg{
+    display: none !important;
+  }
+}
+@media (max-width:992px) {
+  footer .footer-info > div{
+    height: auto;
+    margin: 10px 0;
+  }
+  footer .footer-info > div img{
+    width: 80px;
+    height: 80px;
+  }
+}
+@media (max-width:768px) {
+  footer .footer-info{
+    flex-wrap: wrap;
+  }
+  footer .footer-info > div{
+      width: 40%;
+      margin: 10px 4%;
+      height: auto;
+  }
+  footer .footer-info > div img{
+    width: 60px;
+    height: 60px;
+  }
+}

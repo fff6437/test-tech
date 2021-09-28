@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试云</title>
+    <link rel="stylesheet" href="./js/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .news-nav-title{
+            width: 100%;
+            
+        }
+        .news-basic-info{
+            font-weight: 500;
+            color: #bebebe;
+            max-width: 1140px;
+            margin: auto;
+            padding: 30px;
+            width: calc(100% - 60px);
+        }
+        .news-basic-info span{
+            display: block;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .news-basic-info .basic-title{
+            font-size: 21px;
+            font-weight: 600;
+            color: #303030;
+            margin-top: 0px;
+        }
+        #news-content {
+            width: 100%;
+            min-height: calc(100vh - 421px);
+        }
+        #news-content .warp-content{
+            max-width: 1140px;
+            margin: auto;
+            padding: 30px;
+            width: calc(100% - 60px);
+        }
+        #news-content .warp-content div{
+            margin: 20px auto;
+            text-indent:2em;
+            line-height: 30px;
+        }   
+        #news-content img{
+            width: 60%;
+            display: block;
+            margin: auto;
+        }
+        @media (max-width: 768px){
+            .news-nav-title .news-basic-info{
+                width: 100%;
+                padding: 4%;
+            }
+            #news-content .warp-content{
+                width: 100%;
+                padding: 4%;
+            }
+            #news-content .warp-content img{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav" class="visible-lg">
+        <div>
+            <div class="nav-logo">
+                <img  data-src="./images/logo.jpg" alt="" class="lazyload" />
+            </div>
+            <div class="nav-btn">
+                <a href="./inde.html"><span>首页</span></a>
+                <a href="./news.html"><span>新闻</span></a>
+                <a href="./about.html"><span>关于我们</span></a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default hidden-lg" role="navigation">
+        <div class="container-fluid"> 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img data-src="./images/logo.jpg" alt="" class="lazyload" />
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="./inde.html"><span>首页</span></a></li>
+                <li><a href="./news.html"><span>新闻</span></a></li>
+                <li><a href="./about.html"><span>关于我们</span></a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="news-nav-title">
+        <div class="news-basic-info"></div>
+    </div>
+    <div id="news-content">
+
+    </div>
+    <footer>
+        <div class="footer-info">
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/address1.png 80w,  
+                https://pic.90sheji.com/design/00/07/85/23/5931650b5ec43.png!/fw/315/quality/90/unsharp/true/compress/true/canvas/315x315a0a0/cvscolor/FFFFFFFF" 
+                alt="" />福州市台江区万达广场</div>
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/email.png 80w,
+                https://pic.90sheji.com/design/00/79/33/96/591fcd13347c9.png!/fh/414/quality/90/unsharp/true/compress/true/canvas/499x414a0a0/cvscolor/FFFFFFFF" 
+                alt="" />admin.test@163.com</div>
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/phone.png 80w,   
+                https://pic.90sheji.com/design/03/57/50/04/5d30349e7ba79.png!/fw/315/quality/90/unsharp/true/compress/true/canvas/315x315a0a0/cvscolor/FFFFFFFF" 
+                alt="" />400 8063 389</div>
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/weixin.jpg 80w, https://www.kaopuyun.com/templates/sites/site/images/weixin.jpg" 
+                alt="" />关注 测试云</div>
+        </div>
+        <div class="footer-copyright">
+            Copyright © 2011-2021 | 测试云股份有限公司
+        </div>
+    </footer>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/lazysize.js"></script>
+<script>
+        // const newsDetailData = [{
+        //     id:8,detail:{
+        //         img: '	http://gwcdn.51dmb.com/qiniu/19117/image/9c9b550c662283f4a527411a35db562f.jpg',
+        //         time: '2020-03-20',
+        //         title: 'LED透明屏下一个掘金点会是商显市场吗?',
+        //         content: ['凭借高透明度的特性，LED透明屏能轻易营造灵动、剔透的美感，并且视觉穿透性、LED自发光等特性也令其自带时尚、科技和未来感，在创意显示、高端显示领域备受欢迎。如2017年上海车展及广州车展中，LED透明屏在各大汽车品牌展位上与汽车新品争夺眼球——众多汽车品牌选择LED透明屏来装点展位，播放汽车广告，可凸显品牌与汽车的前卫感及科技感。',
+        //             '同样的，在高奢品、时尚品牌门店，LED透明屏也成为“新宠”，目前已有多家奢侈品、时尚品牌将LED透明屏引入店内，作为橱窗广告来展示产品。其中的缘由不难理解——透明屏的通透性与多数店面的透明橱窗设计高度契合，既能展现产品的动态视频广告，又不会完全挡住过往路人观看店铺内的产品陈设等情况，再者LED透明屏仍属于较新的显示设备，给人以新潮、创意视觉感受，衬托出品牌的时尚格调。',
+        //             '此外，在高新园区、高新技术企业等，较为注重打造科技、创新氛围的场所，LED透明屏不仅能播放视频广告，进行品牌、企业宣传，同时可以打造品牌标志物，无形中渲染企业创新、与时俱进的文化氛围，增加人们的“印象分”。而在高档商业购物中心、酒吧、酒店等休闲娱乐消费场所，LED透明屏可凭借时尚前卫的外观，成为吸引人流的创意卖点，增加消费。'
+        //         ]
+        //     }
+        // },{
+        //     id:15,detail:{
+        //         img: 'http://gwcdn.51dmb.com/qiniu/19117/image/68198bf092fe5bd0e5ed1496cd0ed9ad.jpg',
+        //         time: '2019-07-24',
+        //         title: '数字标牌为教育行业开启崭新的时代',
+        //         content: ['数字媒体文化的大流行，使得传统教育手段越来越难与课堂教学保持密切同步，难于充分调动学习积极性，鉴于此，数字标牌的运用在教育部门越来越受欢迎。事实上，如果没有数字标牌支援，许多教育机构则很可能在日益信息化的大潮中被淘汰，而教育部门近年来也成为数字标牌销售增长的热门领域之一。',
+        //             '无疑，当今的教育部门要面临比以往任何时候更加严酷的竞争环境。包括家长、潜在生源、监督机构或访客都在衡量教育机构能否真正提供一个具有吸引力的学习环境。因而，对于教育机构而言，拥抱数字标牌，已经成为打造一个现代化，具有激励性的学习环境的必修课。',
+        //             '事实上，在许多已经部署有数字标牌的学校，师生们普遍认为，数字标牌比起那些陈旧、沉闷、凌乱不堪，且常常显示过时信息的布告栏，能够提供更加及时、生动的信息体验。不夸张地说，数字标牌的运用，为教育行业开启了一个崭新的时代。'
+        //         ]
+        //     }
+        // }]
+        // // 获取到新闻的ID
+        // const url = 'http://www.getNewsDetail.com';
+        // Mock.mock(RegExp(url + ".*"), "get", (option) => {
+        //     let opUrl = option.url;
+        //     const index=opUrl.lastIndexOf("=");
+        //     opUrl = opUrl.substring(index+1,opUrl.length);
+        //     const data = newsDetailData.find(v => {
+        //         return Number(v.id) === Number(opUrl);
+        //     })
+        //     return data.detail;
+        // });
+        axios.get(`https://www.fastmock.site/mock/b8e157a1552e48e5cfcc67f41f11d83e/testyun/getNewsDetail?id=${window.location.search.slice(4)}`)
+        .then(function (response) {
+            if(response.status === 200) {
+                const data = response.data.data.content;
+                const detail = data.detail;
+                const content = document.getElementById('news-content');
+                const divWrap = document.createElement('div');  
+                const img = document.createElement('img');  
+                img.setAttribute('data-src',detail.img)
+                img.className = 'lazyload'
+                divWrap.className = 'warp-content'
+                divWrap.appendChild(img);  
+                detail.content.forEach(v => {
+                    const div = document.createElement('div');  
+                    div.innerText = v; 
+                    divWrap.appendChild(div);  
+                });
+                content.appendChild(divWrap);  
+                $('.news-basic-info').html(`<div>
+                        <span class='basic-title'>${detail.title}</span>
+                        <span>时间: ${detail.time}</span>
+                    </div>`)
+            }
+        })
+     
+
+</script>
+
+</html>

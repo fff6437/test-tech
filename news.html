@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试云</title>
+    <link rel="stylesheet" href="./js/bootstrap-3.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        #title{
+            width: 100%;
+            background-color: #efeff0;
+            font-size: 34px;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .news {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            width: 100%;
+        }
+        .news .news-content{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .news .news-content .news-wrapper{
+            width: 45%;
+            /* height: 150px; */
+            margin: 20px;
+            display: flex;
+            justify-content: space-around;
+            cursor: pointer;
+            align-items: center;
+        }
+        .news .news-content .news-wrapper .img-wrapper{
+            width: 30%;
+            /* 背景色酌情增删 */
+            display: flex;
+            align-items: center;
+            background-color: gainsboro;
+            height: 100%;
+        }
+        .news .news-content .news-wrapper img{
+            /* width: 30%; */
+            width: 100%;
+            /* height: 100%; */
+        }
+        .news .news-content .news-wrapper .right-wrapper{
+            display: inline-block;
+            margin-left: 15px;
+            width: 70%;
+        }
+        .news .news-title{
+            font-size: 18px;
+            font-family: '微软雅黑', sans-serif;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+        .news .news-time{
+            display: block;
+            color: #bebebe;
+        }
+        .news .news-detail{
+            display: block;
+            margin-top: 15px;
+            font-family: '微软雅黑', sans-serif;
+        }
+        .pagination{
+            height: 40px;
+            margin: 20px auto;
+            position: absolute;
+            transform: translate(-50%, -80px);
+            left: 50%;
+            display: flex;
+        }
+        @media (max-width: 800px){
+            .news .news-content .news-wrapper{
+                width: 92%;
+                margin: 20px auto;
+            }
+        }
+        @media (max-width: 400px){
+            .news .news-detail{
+                margin-top: 0;
+
+            }
+        }
+        .modal-dialog{
+            top: 50%;
+            transform: translate(0, -50%) !important;
+            display: flex;
+            align-items: center;
+        }
+        .modal-dialog .modal-content{
+            background:#4ea980;
+            margin:auto;
+            width: 50px;
+        }
+        .loader {
+            text-indent: -9999em;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            box-shadow: inset 0 0 0 15px #FFF;
+            border-radius: 50%;
+        }
+        .loader::before {
+            position: absolute;
+            content: '';
+            width: 25px;
+            height: 50px;
+            background: #4ea980;
+
+            /*半圆*/
+            border-radius: 0 50px 50px 0;
+            left: 25px;
+
+            /*原点从（0,0）移至圆心处（0,100），绕圆心旋转*/
+            transform-origin: 0px 25px;
+            animation: load-effect 2s infinite linear;
+        }
+
+        /*最上层（即::before之前）绘制透明白色圆环*/
+        .loader::after {
+            position: absolute;
+            content: '';
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            left: 0;
+            box-shadow: inset 0 0 0 15px rgba(255,255,255,.2);
+        }
+
+        /*动画：旋转360°*/
+        @keyframes load-effect {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav" class="visible-lg">
+        <div>
+            <div class="nav-logo">
+                <img  data-src="./images/logo.jpg" alt="" class="lazyload" />
+            </div>
+            <div class="nav-btn">
+                <a href="./inde.html"><span>首页</span></a>
+                <a href="./news.html"><span>新闻</span></a>
+                <a href="./about.html"><span>关于我们</span></a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default hidden-lg" role="navigation">
+        <div class="container-fluid"> 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img data-src="./images/logo.jpg" alt="" class="lazyload" />
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="./inde.html"><span>首页</span></a></li>
+                <li><a href="./news.html"><span>新闻</span></a></li>
+                <li><a href="./about.html"><span>关于我们</span></a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div id="title">
+        新闻热点
+    </div>
+    <div class="news">
+        
+    </div>
+    <ul class="pagination">
+
+    </ul>
+    <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="loader">Loading...</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-info">
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/address1.png 80w,  
+                https://pic.90sheji.com/design/00/07/85/23/5931650b5ec43.png!/fw/315/quality/90/unsharp/true/compress/true/canvas/315x315a0a0/cvscolor/FFFFFFFF" 
+                alt="" />福州市台江区万达广场</div>
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/email.png 80w,
+                https://pic.90sheji.com/design/00/79/33/96/591fcd13347c9.png!/fh/414/quality/90/unsharp/true/compress/true/canvas/499x414a0a0/cvscolor/FFFFFFFF" 
+                alt="" />admin.test@163.com</div>
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/phone.png 80w,   
+                https://pic.90sheji.com/design/03/57/50/04/5d30349e7ba79.png!/fw/315/quality/90/unsharp/true/compress/true/canvas/315x315a0a0/cvscolor/FFFFFFFF" 
+                alt="" />400 8063 389</div>
+            <div><img class="lazyload" data-sizes="auto"
+                data-srcset="./images/weixin.jpg 80w, https://www.kaopuyun.com/templates/sites/site/images/weixin.jpg" 
+                alt="" />关注 测试云</div>
+        </div>
+        <div class="footer-copyright">
+            Copyright © 2011-2021 | 测试云股份有限公司
+        </div>
+    </footer>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<!-- <script src="http://mockjs.com/dist/mock.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/lazysize.js"></script>
+
+<script>
+    let totalPage = 0; // 数据总页数
+    let activeKey = 1; // 当前页数
+    axios.get('https://www.fastmock.site/mock/b8e157a1552e48e5cfcc67f41f11d83e/testyun/getNewsInfoList?page=1&pageSize=10')
+    .then(function (response) {
+        if(response.status === 200) {
+            const data = response.data.data.contentData;
+            total = response.data.data.total;
+            if (data.length > 0) {
+                // 分页
+                totalPage = Math.ceil(total / 10);
+                setPagination();
+                setNewsList(data);
+                addClickFunc();   
+                addPageFunc();             
+            }
+        } 
+    });
+    // 增加事件代理，绑定点击函数
+    const addClickFunc = () => {
+        // $('.news-content .news-wrapper').click(function (e) {
+        //     const dataId = $(this).attr('data-id');
+        //     window.location.href = `./news-detail.html?id=${dataId}`
+        // })
+        $('.news').click('.news-wrapper',function (e) {
+            const dataId = $(e.target).parents('.news-wrapper').attr('data-id') || $(e.target).attr('data-id');
+            if (!dataId) return;
+            window.location.href = `./news-detail.html?id=${dataId}`
+        })
+    }
+    // 初始化分页器
+    const setPagination = () => {
+        const pagination = document.querySelector('.pagination'); 
+        let left = document.createElement('li');  
+        let leftA = document.createElement('a');  
+        let rightA = document.createElement('a');  
+        leftA.href='#';
+        leftA.setAttribute('data-id','left');
+        leftA.innerHTML = '&laquo;';
+        left.className='disabled';
+        left.appendChild(leftA);  
+        pagination.appendChild(left);  
+        for (let index = 0; index < totalPage; index++) {
+            let li = document.createElement('li');  
+            let a = document.createElement('a');  
+            a.innerText = index+1;
+            if (index === 0) {
+                li.className = 'active';
+            }
+            a.setAttribute('data-id',index+1);
+            a.href='#';
+            li.appendChild(a);  
+            pagination.appendChild(li);  
+        }
+        let right = document.createElement('li');  
+        rightA.href='#';
+        rightA.innerHTML = '&raquo;';
+        rightA.setAttribute('data-id','right');
+        right.appendChild(rightA);  
+        pagination.appendChild(right); 
+    }
+
+    const getNewList = () => {
+        axios.get(`https://www.fastmock.site/mock/b8e157a1552e48e5cfcc67f41f11d83e/testyun/getNewsInfoList?page=${activeKey}&pageSize=10`).then(res => {
+            setNewsList(res.data.data.contentData);
+        })
+    }
+
+    // 给分页器增加点击处理方法
+    const addPageFunc = () => {
+        $('.pagination li a').click(function(){
+            const index = $(this).attr('data-id');
+            if (index === 'left') {
+                // 点击上一页判断
+                if (Number(activeKey) === 1) return;
+                $('.pagination li').eq(activeKey).removeClass('active');
+                $('.pagination li').eq(Number(activeKey)-1).addClass('active');
+                activeKey = --activeKey;
+                getNewList();
+            } else if (index === 'right') {
+                // 点击下一页判断
+                if (Number(activeKey) === Number(totalPage)) return;
+                $('.pagination li').eq(activeKey).removeClass('active');
+                $('.pagination li').eq(Number(activeKey)+1).addClass('active');
+                activeKey = ++activeKey;
+                getNewList();
+            } else {
+                // 点击页码时处理
+                $('.pagination li').eq(activeKey).removeClass('active');
+                $('.pagination li').eq(index).addClass('active');
+                activeKey = index;
+                getNewList();
+            }
+
+            // 如果是第一个，则上一页不能点击
+            if (Number(index) === 1) {
+                $('.pagination li').eq(-1).removeClass('disabled');
+                $('.pagination li').eq(0).addClass('disabled');
+            // 如果是最后一个，则下一页不能点击
+            } else if (Number(index) === Number(totalPage)) {
+                $('.pagination li').eq(0).removeClass('disabled');
+                $('.pagination li').eq(-1).addClass('disabled');
+            } else {
+                // 其他情况，上下页都可以点击
+                $('.pagination li').eq(0).removeClass('disabled');
+                $('.pagination li').eq(-1).removeClass('disabled');
+                
+            }
+        })
+    }
+
+    const setNewsList = (data) => {
+        // 渲染新闻数据
+        const news = document.querySelector('.news'); 
+        let div = document.createElement('div');
+        div.className = 'news-content';
+        $('.news').empty();
+        $('#loading').modal('show');
+        data.forEach(v => {
+            const content = document.createElement('div');  
+            const detail = document.createElement('span');  
+            const rightContent = document.createElement('div');  
+            const imgDiv = document.createElement('div');  
+            const img = document.createElement('img');  
+            const title = document.createElement('span');  
+            const time = document.createElement('span');  
+            img.setAttribute('data-src',v.img);
+            content.className = 'news-wrapper';
+            content.setAttribute('data-id',v.id);
+            img.className = 'lazyload';
+            title.innerText = v.title; 
+            time.innerText = v.time; 
+            detail.className = 'news-detail';
+            title.className = 'news-title';
+            time.className = 'news-time';
+            detail.innerText = v.detail; 
+            imgDiv.className = 'img-wrapper';
+            rightContent.className = 'right-wrapper';
+            imgDiv.appendChild(img);  
+            content.appendChild(imgDiv);  
+            rightContent.appendChild(title);  
+            rightContent.appendChild(time);  
+            rightContent.appendChild(detail);  
+            content.appendChild(rightContent);  
+            div.appendChild(content);  
+            news.appendChild(div); 
+        })
+        $('#loading').modal('hide');
+        // addClickFunc();
+    }
+
+</script>
+
+</html>

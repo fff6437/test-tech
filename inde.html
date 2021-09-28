@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>测试云</title>
+    <link rel="stylesheet" href="./js/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/idangerous.swiper2.7.6.css">
+    <style>
+        .silder {
+            overflow: hidden;
+            width: 100%;
+            /* height: 480px; */
+            position: relative;
+            height: calc(100vw / 4);
+        }
+        .silder .swiper-container {
+            height: 100%;
+        }
+
+        #product{
+            margin: auto;
+            /* height: 440px; */
+            background-image: url('./images/index_cp_bg.jpg');
+            padding-bottom: 20px;
+        }
+        #product .product-title{
+            text-align: center;
+            font-size: 48px;
+            color: #333;
+            padding: 10px 0;
+        }
+        #product .product-info{
+            display: flex;
+            /* justify-content: space-around; */
+            /* margin-top: 20px; */
+            max-width: 1200px;
+            margin: auto;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        #product .product-info>div{
+            width: 200px;
+            height: 260px;
+            text-align: center;
+            background-color: #fff;
+            font-family: SourceHanSansCN-Medium;
+            -webkit-transition: all .2s linear;
+            transition: all .2s linear;
+            margin: 20px;
+            border-radius: 4px;
+        }
+        #product .product-info>div:hover{
+            -webkit-box-shadow: 0 8px 30px rgb(0 0 0 / 30%);
+            box-shadow: 0 8px 30px rgb(0 0 0 / 30%);
+            -webkit-transform: translate3d(0, -2px, 0);
+            transform: translate3d(0, -2px, 0);
+        }
+        #product .product-info>div div{
+            background-color: #008cd6;
+            color: #fff;
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        #product .product-info>div span{
+            display: block;
+            color: #333;
+            line-height: 44px;
+            font-size: 18px;
+        }
+        #advantage{
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            /* height: 210px; */
+            background-color: #fff;
+            /* background-color: #efeff0; */
+        }
+        #advantage .advantage-title{
+            text-align: center;
+            font-size: 48px;
+            color: #333;
+            padding: 10px 0;
+        }
+        .advantage-info{
+            padding: 40px 0;
+            background-color: #efeff0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .advantage-info>div{
+            position: relative;
+            display: inline-block;
+            color: #333;
+            font-size: 16px;
+            width: 25%;
+            text-align: center;
+        }
+        .advantage-info>div::after{
+            position: absolute;
+            top: 7px;
+            left: -1px;
+            content: '';
+            width: 0;
+            height: 48px;
+            border-left: 1px solid #d5d5d6;
+        }
+        .advantage-info>div:first-child:after{
+            border-left: 0;
+        }
+        .advantage-info>div span{
+            font-size: 36px;
+            color: #333;
+            font-family: "SourceHanSansCN-Normal", "SourceHanSansCN-Medium";
+        }
+        .advantage-info>div div{
+            display: inline-block;
+        }
+        #news{
+            max-width: 1200px;
+            margin: auto;
+            width: 100%;
+            /* background-color: #efeff0; */
+        }
+        #news .news-title{
+            text-align: center;
+            font-size: 48px;
+            color: #333;
+            padding: 10px 0;
+        }
+        #news .news-info{
+            display: flex;
+            justify-content: space-around;
+        }
+        #news .news-info>div{
+            width: 250px;
+        }
+        #news .news-info>div div{
+            margin: 10px 0;
+        }
+        #news .news-info>div div:nth-child(2){
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        #news .news-info>div div:last-child{
+            font-size: 14px;
+            padding-top: 10px;
+            border-top: 1px solid gainsboro;
+        }
+        #news .img-wrapper {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #news .news-info img{
+            /* width: 100%; */
+            height: 100%;
+            /* height: 160px; */
+        }
+        @media (max-width:1200px) {
+            .advantage-info{
+                flex-wrap: wrap;
+            }
+            .advantage-info>div{
+                width: 50%;
+                margin: 10px 0;
+            }
+            #news .news-info{
+                flex-wrap: wrap;
+            }
+            #news .news-info>div{
+                width: 40%;
+                margin: 10px 4%;
+            }
+            .silder {
+                height: calc(100vw / 2.2);
+            }
+        }
+        @media (max-width:580px) {
+            #news .img-wrapper {
+                height: 120px;
+            }
+        }
+        @media (max-width: 485px) {
+            #product .product-info{
+                justify-content: start;
+            }
+            #product .product-info>div{
+                width: 45%;
+                margin: 2.5%;
+                height: auto;
+                padding-bottom: 10px;
+            }
+            #product .product-info>div span{
+                font-size: 14px;
+                /* line-height: 34px; */
+            }
+            #news .img-wrapper {
+                height: 100px;
+            }
+        }
+        @media (max-width: 385px) {
+            #news .img-wrapper {
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav" class="visible-lg">
+        <div>
+            <div class="nav-logo">
+                <img  data-src="./images/logo.jpg" alt="" class="lazyload" />
+            </div>
+            <div class="nav-btn">
+                <a href="./inde.html"><span>首页</span></a>
+                <a href="./news.html"><span>新闻</span></a>
+                <a href="./about.html"><span>关于我们</span></a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-default hidden-lg" role="navigation">
+        <div class="container-fluid"> 
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img data-src="./images/logo.jpg" alt="" class="lazyload" />
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="./inde.html"><span>首页</span></a></li>
+                <li><a href="./news.html"><span>新闻</span></a></li>
+                <li><a href="./about.html"><span>关于我们</span></a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="silder" id="silder">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- <div class="swiper-slide"><img src="./images/banner1_cut.jpg" width="100%" height="480" /></div>
+                <div class="swiper-slide"><img src="./images/banner3_cut.jpg" width="100%" height="480" /></div>
+                <div class="swiper-slide"><img src="./images/banner4_cut.jpg" width="100%" height="480" /></div> -->
+            </div>
+        </div>
+    </div>
+    <div id="product">
+        <div class='product-title'>热门产品</div>
+        <div class="product-info">
+        </div>
+    </div>
+    <div id="advantage">
+        <div class='advantage-title'>公司优势</div>
+        <div class="advantage-info">
+        </div>
+    </div>
+    <div id="news">
+        <div class='news-title'>新闻动态</div>
+        <div class="news-info">
+        </div>
+    </div>
+    <footer>
+        <div class="footer-info">
+            <div>
+                <img class="lazyload" data-sizes="auto"
+                data-srcset="./images/address1.png 80w,  
+                https://pic.90sheji.com/design/00/07/85/23/5931650b5ec43.png!/fw/315/quality/90/unsharp/true/compress/true/canvas/315x315a0a0/cvscolor/FFFFFFFF" 
+                alt="" />福州市台江区万达广场</div>
+            <div>
+                <img class="lazyload" data-sizes="auto"
+                data-srcset="./images/email.png 80w,
+                https://pic.90sheji.com/design/00/79/33/96/591fcd13347c9.png!/fh/414/quality/90/unsharp/true/compress/true/canvas/499x414a0a0/cvscolor/FFFFFFFF" 
+                alt="" />admin.test@163.com</div>
+            <div>
+                <img class="lazyload" data-sizes="auto"
+                data-srcset="./images/phone.png 80w,   
+                https://pic.90sheji.com/design/03/57/50/04/5d30349e7ba79.png!/fw/315/quality/90/unsharp/true/compress/true/canvas/315x315a0a0/cvscolor/FFFFFFFF" 
+                alt="" />400 8063 389</div>
+            <div>
+                <img class="lazyload" data-sizes="auto"
+                data-srcset="./images/weixin.jpg 80w, https://www.kaopuyun.com/templates/sites/site/images/weixin.jpg" 
+                alt="" />关注 测试云</div>
+        </div>
+        <div class="footer-copyright">
+            Copyright © 2011-2021 | 测试云股份有限公司
+        </div>
+    </footer>
+</body>
+<script src="./js/idangerous.swiper2.7.6.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/lazysize.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<script>
+
+ 
+ 
+    
+    // 轮播数据
+    // axios.get('http://www.getSwiperWrapper.com')
+    axios.get('https://www.fastmock.site/mock/b8e157a1552e48e5cfcc67f41f11d83e/testyun/getSlideList')
+    .then(function (response) {
+        if(response.status === 200) {
+            const data = response.data.data;
+            const slide = 'swiper-slide';
+            const wrapper = document.querySelector('.swiper-wrapper');
+            console.log(response);
+            data.forEach(v => {
+                const div = document.createElement('div');  
+                const img = document.createElement('img');  
+                img.style.height = '100%';
+                img.style.width = '100%';
+                img.setAttribute('data-srcset',`${v.smallImg} 1200w, ${v.img}`);
+                img.setAttribute('data-sizes','auto');
+                img.className = 'lazyload';
+                div.className = slide;
+                div.appendChild(img);  
+                wrapper.appendChild(div);  
+            });
+        }
+        // 轮播
+        const mySwiper = new Swiper('.swiper-container', {
+            autoplay: 3000,//可选选项，自动滑动
+            loop: true,//可选选项，开启循环
+            speed: 250,
+        });
+    });
+
+    // 产品数据
+    axios.get('https://www.fastmock.site/mock/b8e157a1552e48e5cfcc67f41f11d83e/testyun/getProductInfo')
+    .then(function (response) {
+        if(response.status === 200) {
+            const data = response.data.data;
+            const product = document.querySelector('.product-info');
+            data.forEach(v => {
+                const div = document.createElement('div');  
+                const divInfo = document.createElement('div');  
+                divInfo.innerText = v.name; 
+                div.appendChild(divInfo);  
+                v.info.forEach(item => {
+                    let span = document.createElement('span');  
+                    span.innerText = item.name; 
+                    div.appendChild(span);  
+                })
+                product.appendChild(div);  
+            });
+        }
+    });
+
+    axios.get('https://www.fastmock.site/mock/b8e157a1552e48e5cfcc67f41f11d83e/testyun/getAdvantageInfo')
+    .then(function (response) {
+        if(response.status === 200) {
+            const data = response.data.data;
+            const advantage = document.querySelector('.advantage-info');
+            data.forEach(v => {
+                const div = document.createElement('div');  
+                const span = document.createElement('span');  
+                const detail = document.createElement('div');  
+                span.innerText = v.name; 
+                detail.innerText = v.detail; 
+                div.appendChild(span);  
+                div.appendChild(detail);  
+                advantage.appendChild(div);  
+            });
+        }
+    })
+
+    // 公司新闻
+    axios.get('https://www.fastmock.site/mock/b8e157a1552e48e5cfcc67f41f11d83e/testyun/getNewsInfo')
+    .then(function (response) {
+        if(response.status === 200) {
+            const data = response.data.data;
+            const news = document.querySelector('.news-info');
+            data.forEach(v => {
+                const div = document.createElement('div');  
+                const imgDiv = document.createElement('div');  
+                const detail = document.createElement('div');  
+                const img = document.createElement('img');  
+                const title = document.createElement('div');  
+                img.setAttribute('data-src',v.img);
+                img.className = 'lazyload';
+                title.innerText = v.title; 
+                detail.innerText = v.detail; 
+                imgDiv.className = 'img-wrapper';
+                imgDiv.appendChild(img);  
+                div.appendChild(imgDiv);  
+                div.appendChild(title);  
+                div.appendChild(detail);  
+                news.appendChild(div);  
+            });
+        }
+    })
+
+</script>
+
+</html>
