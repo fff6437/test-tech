@@ -155,14 +155,16 @@
             border-top: 1px solid gainsboro;
         }
         #news .img-wrapper {
-            height: 140px;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: gainsboro;
         }
         #news .news-info img{
             /* width: 100%; */
-            height: 100%;
+            height: calc(100% - 20px);
+            object-fit: contain;
             /* height: 160px; */
         }
         @media (max-width:1200px) {
@@ -184,9 +186,14 @@
                 height: calc(100vw / 2.2);
             }
         }
+        @media (max-width:768px) {
+            #news .img-wrapper {
+                height: 140px;
+            }
+        }
         @media (max-width:580px) {
             #news .img-wrapper {
-                height: 120px;
+                height: 130px;
             }
         }
         @media (max-width: 485px) {
@@ -204,12 +211,12 @@
                 /* line-height: 34px; */
             }
             #news .img-wrapper {
-                height: 100px;
+                height: 90px;
             }
         }
         @media (max-width: 385px) {
             #news .img-wrapper {
-                height: 60px;
+                height: 80px;
             }
         }
     </style>
