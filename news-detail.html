@@ -181,11 +181,11 @@
                 img.className = 'lazyload'
                 divWrap.className = 'warp-content'
                 divWrap.appendChild(img);  
-                detail.content.forEach(v => {
+                // detail.content.forEach(v => {
                     const div = document.createElement('div');  
-                    div.innerText = v; 
+                    div.innerHTML = detail.content; 
                     divWrap.appendChild(div);  
-                });
+                // });
                 content.appendChild(divWrap);  
                 $('.news-basic-info').html(`<div>
                         <span class='basic-title'>${detail.title}</span>

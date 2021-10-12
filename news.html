@@ -81,6 +81,9 @@
             left: 50%;
             display: flex;
         }
+        .pagination li a {
+            cursor: pointer;
+        }
         @media (max-width: 800px){
             .news .news-content .news-wrapper{
                 width: 92%;
@@ -268,7 +271,7 @@
         let left = document.createElement('li');  
         let leftA = document.createElement('a');  
         let rightA = document.createElement('a');  
-        leftA.href='#';
+        // leftA.href='#';
         leftA.setAttribute('data-id','left');
         leftA.innerHTML = '&laquo;';
         left.className='disabled';
@@ -282,12 +285,12 @@
                 li.className = 'active';
             }
             a.setAttribute('data-id',index+1);
-            a.href='#';
+            // a.href='#';
             li.appendChild(a);  
             pagination.appendChild(li);  
         }
         let right = document.createElement('li');  
-        rightA.href='#';
+        // rightA.href='#';
         rightA.innerHTML = '&raquo;';
         rightA.setAttribute('data-id','right');
         right.appendChild(rightA);  
@@ -319,6 +322,7 @@
                 activeKey = ++activeKey;
                 getNewList();
             } else {
+                if (Number(activeKey) === Number(index)) return;
                 // 点击页码时处理
                 $('.pagination li').eq(activeKey).removeClass('active');
                 $('.pagination li').eq(index).addClass('active');
